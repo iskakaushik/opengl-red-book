@@ -1,23 +1,21 @@
 # OpenGL Programming Guide Walkthrough
 
-## July 11, 2022 - Part - 1
+## July 11, 2022 - Chapter 1: Introduction to OpenGL
 
-### Chapter 1: Introduction to OpenGL
-
-Starting Point
+### Starting Point
 
 * We have a scene description
   - How do you describe the scene
 * Convert the scene description into pixels
   - How do you do it efficiently
 
-Client vs Server
+### Client vs Server
 
 * Code we write is the client
 * Manufacturer of the hardware implements the server (black-box)
 * Host (CPU) vs Device (GPU)
 
-Rendering Stages
+### Rendering Stages
 
 1. Vertex Data
   - i/o: named buffer arrays
@@ -70,7 +68,7 @@ fragment will be.”
     * stencil testing
     * blending
 
-Example (unclear if this is true)
+### Example (unclear if this is true)
 
 ```
 Stage 1:
@@ -119,16 +117,14 @@ g([(x_i, y_i)]) = [ cyclical sum with next index ]
   [...]
 ]
 
-Stage 6:
-Stage 1
-Stage 1
-Stage 1
-Stage 1
-  
+Stage 9:
+
+give color to pixels
+    
 ```
 
 
-## Resources
+# Resources
 
 1. [Red Book](https://www.oreilly.com/library/view/opengl-programming-guide/9780134495514/)
 2. 
