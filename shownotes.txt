@@ -1,0 +1,19 @@
+Looking into OpenGL Programming Guide - <TITLE>
+
+https://github.com/iskakaushik/opengl-red-book/blob/main/chapter-<CHAPTER>.md
+
+Timestamps:
+
+<ITEM-1> - <TIME_STAMP>
+
+Repository link: https://github.com/iskakaushik/opengl-red-book.
+
+Github: https://github.com/iskakaushik
+Twitter: https://twitter.com/iskakaushik
+
+
+#OpenGL
+#Shaders
+#RedBook
+#CPlusPlus
+#Graphics
