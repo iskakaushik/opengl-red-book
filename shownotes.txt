@@ -4,7 +4,8 @@ https://github.com/iskakaushik/opengl-red-book/blob/main/chapter-<CHAPTER>.md
 
 Timestamps:
 
-<ITEM-1> - <TIME_STAMP>
+00:00 - Introduction
+<TIME_STAMP> - <ITEM>
 
 Repository link: https://github.com/iskakaushik/opengl-red-book.
 
