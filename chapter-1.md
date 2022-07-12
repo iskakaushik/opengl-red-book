@@ -125,5 +125,4 @@ give color to pixels
 # Resources
 
 1. [Red Book](https://www.oreilly.com/library/view/opengl-programming-guide/9780134495514/)
-2. 
 
