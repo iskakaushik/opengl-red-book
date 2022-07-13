@@ -23,13 +23,13 @@
   - note: only one vertex shader can be active at any given time.
 3. Tessellation Control Shader
 4. Tessellation Evaluation Shader
-  - i: shaded vertex structures
+  - i: shaded vertex structures (patches?)
   - o: tesselated structures a.k.a geometric structs
   - Notes:
     * looks like this stage is to improve the appearance of the models.
     * TODO: not really clear, something patched geometries
 5. Geometry Shader
-  - i: tessellated structures / geom structs
+  - i: tessellated structures / geom structs (adjacency primitives?)
   - o: shaded geom structs
 6. Primitive Setup / Assembly
   - i: shaded geom structs
