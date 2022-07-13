@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [$default-branch]
+  pull_request:
+    branches: [$default-branch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - uses: lukka/get-cmake@latest
+
+      - name: Restore artifacts, or setup vcpkg for building artifacts
+        uses: lukka/run-vcpkg@main
+        id: runvcpkg
+        with:
+          vcpkgJsonGlob: "vcpkg.json"
+
+      - name: Run CMake+vcpkg+Ninja
+        uses: lukka/run-cmake@v10
+        with:
+          cmakeListsTxtPath: "${{ github.workspace }}/CMakeLists.txt"
+          configurePreset: "ninja-multi-vcpkg"
+          buildPreset: "ninja-multi-vcpkg"

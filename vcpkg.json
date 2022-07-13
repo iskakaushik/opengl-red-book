@@ -1,0 +1,11 @@
+{
+  "name": "opengl_demo",
+  "version-string": "latest",
+  "dependencies": [
+    "fmt",
+    "cxxopts",
+    "glad",
+    "opengl",
+    "glfw"
+  ]
+}
