@@ -15,17 +15,21 @@ jobs:
         with:
           submodules: true
 
-      - uses: lukka/get-cmake@latest
+      - name: install gl deps
+        run: |
+          sudo apt update
+          sudo apt install libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libxext-dev
 
-      - name: Restore artifacts, or setup vcpkg for building artifacts
-        uses: lukka/run-vcpkg@main
-        id: runvcpkg
-        with:
-          vcpkgJsonGlob: "vcpkg.json"
+      - name: install vcpkg deps
+        run: |
+          ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
+          ./vcpkg/vcpkg install
 
-      - name: Run CMake+vcpkg+Ninja
-        uses: lukka/run-cmake@v10
-        with:
-          cmakeListsTxtPath: "${{ github.workspace }}/CMakeLists.txt"
-          configurePreset: "ninja-multi-vcpkg"
-          buildPreset: "ninja-multi-vcpkg"
+      - name: cmake configure
+        run: |
+          mkdir build
+          cmake -DCMAKE_TOOLCHAIN_FILE=$PWD/vcpkg/scripts/buildsystems/vcpkg.cmake -S. -Bbuild
+
+      - name: cmake build
+        run: |
+          cmake --build build
