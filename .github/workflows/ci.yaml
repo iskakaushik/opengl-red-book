@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: install gl deps
+        run: |
+          sudo apt update
+          sudo apt install libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libxext-dev
+
+      - name: install vcpkg deps
+        run: |
+          ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
+          ./vcpkg/vcpkg install
+
+      - name: cmake configure
+        run: |
+          mkdir build
+          cmake -DCMAKE_TOOLCHAIN_FILE=$PWD/vcpkg/scripts/buildsystems/vcpkg.cmake -S. -Bbuild
+
+      - name: cmake build
+        run: |
+          cmake --build build
