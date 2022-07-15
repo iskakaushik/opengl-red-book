@@ -25,11 +25,6 @@ jobs:
           ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
           ./vcpkg/vcpkg install
 
-      - name: cmake configure
-        run: |
-          mkdir build
-          cmake -DCMAKE_TOOLCHAIN_FILE=$PWD/vcpkg/scripts/buildsystems/vcpkg.cmake -S. -Bbuild
-
       - name: cmake build
         run: |
-          cmake --build build
+          ./build.sh

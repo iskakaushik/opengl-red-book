@@ -7,6 +7,7 @@
     "cxxopts",
     "glad",
     "opengl",
-    "glfw3"
+    "glfw3",
+    "spdlog"
   ]
 }

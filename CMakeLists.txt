@@ -6,6 +6,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(fmt REQUIRED)
 find_package(cxxopts REQUIRED)
+find_package(spdlog REQUIRED)
+
 find_package(glfw3 REQUIRED)
 find_package(glad REQUIRED)
 
@@ -14,11 +16,13 @@ target_compile_features(opengl_demo PRIVATE cxx_std_17)
 
 target_link_libraries(opengl_demo
   PRIVATE
-    # general
-    fmt::fmt
-    cxxopts::cxxopts
-    # GL
-    glfw
-    glad::glad
-)
 
+  # general
+  fmt::fmt
+  cxxopts::cxxopts
+  spdlog::spdlog
+
+  # GL
+  glfw
+  glad::glad
+)
