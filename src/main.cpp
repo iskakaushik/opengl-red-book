@@ -1,18 +1,31 @@
 #include <iostream>
 
-// GLAD has to be included before any other OpenGL header.
 #include <glad/glad.h>
 
+// GLAD has to be included before any other OpenGL header.
 #include <GLFW/glfw3.h>
 #include <spdlog/spdlog.h>
 
-void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
+void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
   glViewport(0, 0, width, height);
 }
 
-void processInput(GLFWwindow *window) {
+void processInput(GLFWwindow* window) {
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
     glfwSetWindowShouldClose(window, true);
+}
+
+void DrawTriangle(GLFWwindow* window) {
+  float vertices[] = {
+      -0.5f, -0.5f, 0.f, 0.5f, -0.5f, 0.f, 0.f, 0.5f, 0.f,
+  };
+  
+  uint32_t VBO;
+  glGenBuffers(1, &VBO);
+  
+  glBindBuffer(GL_ARRAY_BUFFER, VBO);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+  
 }
 
 int main() {
@@ -22,7 +35,7 @@ int main() {
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-  GLFWwindow *window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
+  GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
   if (window == NULL) {
     std::cout << "Failed to create GLFW window" << std::endl;
     glfwTerminate();
@@ -45,6 +58,8 @@ int main() {
     // rendering commands go here.
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
+
+    DrawTriangle(window);
 
     // do swap buffers calls here.
     glfwSwapBuffers(window);
